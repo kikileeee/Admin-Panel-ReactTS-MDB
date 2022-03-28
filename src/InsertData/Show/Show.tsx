@@ -10,17 +10,22 @@ interface dataStructure {
     Users: {
         _id: string,
         name: string,
-        age: string,
+        email: string,
+        role: string,
         date: string,
         __v: number
     }[]
 }
 
-const Show: React.FC = () => {
+interface Props {
+    setKey: React.Dispatch<React.SetStateAction<string>>
+};
+
+const Show: React.FC<Props> = (props) => {
     const [Users, setUsers] = useState<dataStructure["Users"]>([])
 
     let count: number = 0
-    
+
     useEffect(() => {
         fetch('http://192.168.1.113:9000/users/', {
             method: 'GET',
@@ -32,6 +37,31 @@ const Show: React.FC = () => {
             }
             );
     }, [])
+    function takeDataOnUpdate() {
+        fetch('http://192.168.1.113:9000/users/', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .then(response => response.json())
+            .then(data => {
+                setUsers(data)
+            }
+            );
+    }
+    async function deleteThis(x: string) {
+        console.log(x)
+        let data: object = { id: x }
+        await fetch('http://192.168.1.113:9000/users/', {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        takeDataOnUpdate()
+    }
+    async function updateUser(x:Object){
+        props.setKey('update')
+
+    }
     return (
         <div className='Show'>
             <div className='fdisplay'>
@@ -51,13 +81,13 @@ const Show: React.FC = () => {
                 return <div className='userItem' key={e._id}>
                     <p>{count}#</p>
                     <p>{e.name}</p>
-                    <p>{e.age}</p>
-                    <p>Regular</p>
+                    <p>{e.email}</p>
+                    <p>{e.role}</p>
                     <p>{e.date}</p>
                     <p className='icons'>
-                        <button><MdEdit /></button>
-                        <button><AiFillDelete /></button>
-                        <button><BiDotsVertical /></button>
+                        <button onClick={() => updateUser(e)}><MdEdit /></button>
+                        <button onClick={() => deleteThis(e._id)}><AiFillDelete /></button>
+                        <button ><BiDotsVertical /></button>
                     </p>
                 </div>
             })}

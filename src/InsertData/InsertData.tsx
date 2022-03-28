@@ -18,12 +18,12 @@ const InsertData: React.FC = () => {
                     className="mb-3"
                 >
                     <Tab eventKey="show" title="Show users">
-                        <Show/>
+                        <Show setKey={setKey}/>
                     </Tab>
                     <Tab eventKey="add" title="Add user" >
                         <AddUser/>
                     </Tab>
-                    <Tab eventKey="update" title="Update user" >
+                    <Tab eventKey="update" title="Edit User" disabled>
                         <p>Update</p>
                     </Tab>
                 </Tabs>

@@ -18,12 +18,22 @@ router.get('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  
+let danas = new Date()
+let date = danas.getFullYear() + '-' + (danas.getMonth() + 1) + '-' + danas.getDate()
+console.log(date)
+
   let data = req.body
   console.log(data)
-  const user = new User({ name: data.username, email: data.email, role: data.role })
+  const user = new User({ name: data.username, email: data.email, role: data.role, date: date })
   await user.save()
   console.log(user)
 });
 
+router.delete('/', async (req, res) => {
+  console.log(req.body)
+  await User.where('_id').equals(`${req.body.id}`).remove()
+  res.send()
+})
 
 module.exports = router;
