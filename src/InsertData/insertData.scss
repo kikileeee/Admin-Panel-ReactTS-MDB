@@ -1,0 +1,14 @@
+.Container{
+    padding: 20px;
+    .buttonPanel{
+        width: 60%;
+        margin: auto;
+        :first-child{
+            flex-wrap: nowrap;
+        }
+        button{
+            margin: 10px;
+            margin-bottom: 0;
+        }
+    }
+}

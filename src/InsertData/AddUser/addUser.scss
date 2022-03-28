@@ -1,0 +1,25 @@
+.AddUser{
+    background-color: rgb(225, 225, 232);
+    min-height: 50vh;
+    .userItem{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        padding: 20px;
+        input{
+            margin:5px;
+            width: 150px;
+            align-self: center;
+            border: none;
+            padding: 7px;
+        }
+        b,p{
+            text-align: center;
+            align-self: center;
+            white-space: nowrap;
+        }
+        button{
+            border: none;
+            margin: auto;
+        }
+    }
+}

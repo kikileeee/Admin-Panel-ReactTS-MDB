@@ -1,0 +1,43 @@
+.Show{
+    background-color: rgb(225, 225, 232);
+    min-height: 50vh;
+    .fdisplay{
+        display: flex;
+        padding: 20px;
+        button{
+            white-space: nowrap;
+            margin-left: auto;
+            align-self: center;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        input{
+            height: min-content;
+            padding: 5px;
+            align-self: center;
+            min-width: 40px;
+            margin-right: auto;
+            width: auto;
+        }
+    }
+    .userItem{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        padding: 20px;
+        b,p{
+            text-align: center;
+            align-self: center;
+        }
+        .icons{
+            display: flex;
+            margin: auto;
+        button{
+            border: none;
+            background-color: transparent;
+            padding: 0;
+            margin: 5px;
+            
+        }
+        }
+    }
+}
