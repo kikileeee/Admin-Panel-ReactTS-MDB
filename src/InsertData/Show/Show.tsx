@@ -4,25 +4,26 @@ import Button from 'react-bootstrap/Button'
 import { MdEdit } from 'react-icons/md'
 import { AiFillDelete } from 'react-icons/ai'
 import { BiDotsVertical } from 'react-icons/bi'
+import { useDispatch } from 'react-redux'
+import { addUser } from '../../store/actions'
 
 
-interface dataStructure {
-    Users: {
+export interface dataStructure {
         _id: string,
         name: string,
         email: string,
         role: string,
         date: string,
         __v: number
-    }[]
 }
 
 interface Props {
     setKey: React.Dispatch<React.SetStateAction<string>>
 };
 
+
 const Show: React.FC<Props> = (props) => {
-    const [Users, setUsers] = useState<dataStructure["Users"]>([])
+    const [Users, setUsers] = useState<dataStructure[]>([])
 
     let count: number = 0
 
@@ -58,10 +59,16 @@ const Show: React.FC<Props> = (props) => {
         })
         takeDataOnUpdate()
     }
-    async function updateUser(x:Object){
+    
+    const dispatch = useDispatch()
+    async function updateUser(x:dataStructure){
         props.setKey('update')
+        
 
+        dispatch(addUser(x))
     }
+
+
     return (
         <div className='Show'>
             <div className='fdisplay'>
@@ -79,7 +86,7 @@ const Show: React.FC<Props> = (props) => {
             {Users.map(e => {
                 count += 1
                 return <div className='userItem' key={e._id}>
-                    <p>{count}#</p>
+                    <p>#{count}</p>
                     <p>{e.name}</p>
                     <p>{e.email}</p>
                     <p>{e.role}</p>

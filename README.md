@@ -1,13 +1,13 @@
 # Simple Admin Panel Project
 
 ###### FrontEnd
-- React Typescript
+- React Typescript with React-Redux
 - SCSS
 - Bootstrap
 
 ###### BackEnd
--NodeJS
--Express
+- NodeJS
+- Express
 
 ###### Database
 -MongoDB / Mongoose

@@ -4,6 +4,7 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import Show from './Show/Show'
 import AddUser from './AddUser/AddUser'
+import UpdateUser from './UpdateUser/UpdateUser'
 
 const InsertData: React.FC = () => {
     const [key, setKey] = useState<string>('show');
@@ -24,7 +25,7 @@ const InsertData: React.FC = () => {
                         <AddUser/>
                     </Tab>
                     <Tab eventKey="update" title="Edit User" disabled>
-                        <p>Update</p>
+                        <UpdateUser/>
                     </Tab>
                 </Tabs>
             </div>
