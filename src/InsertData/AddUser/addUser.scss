@@ -3,14 +3,14 @@
     min-height: 50vh;
     .userItem{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         padding: 20px;
         input{
             margin:5px;
             width: 150px;
             align-self: center;
             border: none;
-            padding: 7px;
+            padding: 10px;
         }
         b,p{
             text-align: center;
@@ -18,8 +18,21 @@
             white-space: nowrap;
         }
         button{
+            margin: 5px;
             border: none;
-            margin: auto;
+            padding: 10px;
+            white-space: nowrap;
+            align-self: center;
+        }
+        select{
+            cursor: pointer;
+            padding: 9px;
+            align-self: center;
+            
+            border: 1px solid transparent
+        }
+        select:focus{
+            border: 1px solid gray
         }
     }
 }

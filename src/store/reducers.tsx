@@ -1,7 +1,7 @@
 import { dataStructure } from "../InsertData/Show/Show"
 import { Action } from "./actions"
 
-const initialUser = {
+export const initialUser = {
         _id:'',
         name: '',
         email: '',

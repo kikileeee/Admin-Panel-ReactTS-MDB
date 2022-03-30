@@ -31,8 +31,14 @@ console.log(date)
 });
 
 router.delete('/', async (req, res) => {
+  await User.findById(`${req.body.id}`).remove()
+  res.send()
+})
+router.put('/', async (req, res) => {
   console.log(req.body)
-  await User.where('_id').equals(`${req.body.id}`).remove()
+  const user = await User.findById(req.body._id)
+    Object.assign(user, req.body)
+    user.save()
   res.send()
 })
 
