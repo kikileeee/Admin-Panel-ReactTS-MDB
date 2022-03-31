@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './show.scss'
 import Button from 'react-bootstrap/Button'
+import Dropdown from 'react-bootstrap/Dropdown'
+import { DropdownButton } from 'react-bootstrap'
 import { MdEdit } from 'react-icons/md'
 import { AiFillDelete } from 'react-icons/ai'
 import { BiDotsVertical } from 'react-icons/bi'
@@ -9,12 +11,12 @@ import { addUser } from '../../store/actions'
 
 
 export interface dataStructure {
-        _id: string,
-        name: string,
-        email: string,
-        role: string,
-        date: string,
-        __v: number
+    _id: string,
+    name: string,
+    email: string,
+    role: string,
+    date: string,
+    __v: number
 }
 
 interface Props {
@@ -59,11 +61,11 @@ const Show: React.FC<Props> = (props) => {
         })
         takeDataOnUpdate()
     }
-    
+
     const dispatch = useDispatch()
-    async function updateUser(x:dataStructure){
+    async function updateUser(x: dataStructure) {
         props.setKey('update')
-        
+
 
         dispatch(addUser(x))
     }
@@ -91,11 +93,15 @@ const Show: React.FC<Props> = (props) => {
                     <p>{e.email}</p>
                     <p>{e.role}</p>
                     <p>{e.date}</p>
-                    <p className='icons'>
+                    <div className='icons'>
                         <button onClick={() => updateUser(e)}><MdEdit /></button>
                         <button onClick={() => deleteThis(e._id)}><AiFillDelete /></button>
-                        <button ><BiDotsVertical /></button>
-                    </p>
+                        <DropdownButton id="dropdown-basic-button" title={<BiDotsVertical color='black' />} menuVariant='dark'>
+                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Add a note to {e.name}</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Remove a note</Dropdown.Item>
+                        </DropdownButton>
+                    </div>
                 </div>
             })}
         </div>
